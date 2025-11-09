@@ -1,2 +1,0 @@
-# MLOPS
-Machine learning
