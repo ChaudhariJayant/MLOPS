@@ -1,13 +1,15 @@
 import os
 from box.exceptions import BoxValueError
 import yaml
-from mlProject import logger
+import logging
 import json
 import joblib
 from ensure import ensure_annotations # pyright: ignore[reportMissingImports]
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
+
+logger = logging.getLogger("mlProjectLogger")
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path)-> ConfigBox:
@@ -67,7 +69,7 @@ def load_json(path: Path) -> ConfigBox:
     return ConfigBox(content)
 
 @ensure_annotations
-def save_bin(file_path: Path, data: Any)
+def save_bin(file_path: Path, data: Any): 
     """Saves data in binary format using joblib
     Args:
         file_path (Path): Path to the binary file
