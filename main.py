@@ -26,3 +26,15 @@ try:
 except Exception as e:
     logger.exception(e)
     raise e
+
+
+
+STAGE_NAME = "Data Transformation Stage"
+try:
+    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+    from src.mlProject.pipeline.stage_03_data_transformation import DataTransformationTrainingPipeline
+    obj = DataTransformationTrainingPipeline()
+    obj.main()
+    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+    raise e
