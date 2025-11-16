@@ -1,25 +1,29 @@
 import os
 from box.exceptions import BoxValueError
 import yaml
-import logging
+from src.mlProject import logger
 import json
 import joblib
-from ensure import ensure_annotations # pyright: ignore[reportMissingImports]
+from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
 
-logger = logging.getLogger("mlProjectLogger")
+
 
 @ensure_annotations
-def read_yaml(path_to_yaml: Path)-> ConfigBox:
-    """Reads a yaml file and returns
+def read_yaml(path_to_yaml: Path) -> ConfigBox:
+    """reads yaml file and returns
+
     Args:
-        path_to_yaml (Path): Path like input
+        path_to_yaml (str): path like input
+
     Raises:
-        e: Raises an exception if yaml file is not found
+        ValueError: if yaml file is empty
+        e: empty file
+
     Returns:
-        ConfigBox: ConfigBox type object
+        ConfigBox: ConfigBox type
     """
     try:
         with open(path_to_yaml) as yaml_file:
@@ -27,65 +31,99 @@ def read_yaml(path_to_yaml: Path)-> ConfigBox:
             logger.info(f"yaml file: {path_to_yaml} loaded successfully")
             return ConfigBox(content)
     except BoxValueError:
-        raise BoxValueError("yaml file is empty")
+        raise ValueError("yaml file is empty")
     except Exception as e:
-        logger.exception(e)
-        raise e 
+        raise e
+    
+
 
 @ensure_annotations
 def create_directories(path_to_directories: list, verbose=True):
-    """Create list of directories
-    Args:
-        path_to_directories (list): List of path of directories
-        verbose (bool, optional): Defaults to True. Whether to log info or not
-    """
-    for path_to_directory in path_to_directories:
-        os.makedirs(path_to_directory, exist_ok=True)
-        if verbose:
-            logger.info(f"Created directory at: {path_to_directory}")
+    """create list of directories
 
-@ensure_annotations
-def save_json(path: Path, data: dict) -> None:
-    """Saves a dictionary to a json file
     Args:
-        path (Path): Path to the json file
-        data (dict): Data to be saved
+        path_to_directories (list): list of path of directories
+        ignore_log (bool, optional): ignore if multiple dirs is to be created. Defaults to False.
+    """
+    for path in path_to_directories:
+        os.makedirs(path, exist_ok=True)
+        if verbose:
+            logger.info(f"created directory at: {path}")
+
+
+def save_json(path: Path, data: dict):
+    """save json data
+
+    Args:
+        path (Path): path to json file
+        data (dict): data to be saved in json file
     """
     with open(path, "w") as f:
         json.dump(data, f, indent=4)
-    logger.info(f"Json file saved at: {path}")
+
+    logger.info(f"json file saved at: {path}")
+
+
+
 
 @ensure_annotations
 def load_json(path: Path) -> ConfigBox:
-    """Loads a json file to a ConfigBox object
+    """load json files data
+
     Args:
-        path (Path): Path to the json file
+        path (Path): path to json file
+
     Returns:
-        ConfigBox: ConfigBox object
+        ConfigBox: data as class attributes instead of dict
     """
-    with open(path, "r") as f:
+    with open(path) as f:
         content = json.load(f)
-    logger.info(f"Json file loaded from: {path}")
+
+    logger.info(f"json file loaded succesfully from: {path}")
     return ConfigBox(content)
 
+
 @ensure_annotations
-def save_bin(file_path: Path, data: Any): 
-    """Saves data in binary format using joblib
+def save_bin(data: Any, path: Path):
+    """save binary file
+
     Args:
-        file_path (Path): Path to the binary file
-        data (Any): Data to be saved
+        data (Any): data to be saved as binary
+        path (Path): path to binary file
     """
-    with open(file_path, "wb") as file_obj:
-        joblib.dump(data, file_obj)
-    logger.info(f"Binary file saved at: {file_path}")
+    joblib.dump(value=data, filename=path)
+    logger.info(f"binary file saved at: {path}")
+
+
+@ensure_annotations
+def load_bin(path: Path) -> Any:
+    """load binary data
+
+    Args:
+        path (Path): path to binary file
+
+    Returns:
+        Any: object stored in the file
+    """
+    data = joblib.load(path)
+    logger.info(f"binary file loaded from: {path}")
+    return data
+
+
 
 @ensure_annotations
 def get_size(path: Path) -> str:
-    """Get size in KB
+    """get size in KB
+
     Args:
-        path (Path): Path to the file
+        path (Path): path of the file
+
     Returns:
-        str: Size in KB
+        str: size in KB
     """
-    size_in_kb = round(os.path.getsize(path) / 1024)
+    size_in_kb = round(os.path.getsize(path)/1024)
     return f"~ {size_in_kb} KB"
+
+
+
+

@@ -23,4 +23,9 @@ model_tranier:
   test_data_path: artifacts/data_transformation/test.csv
   model_name: model.joblib
 
-    
+  
+model_evaluation:
+  root_dir: artifacts/model_evalution
+  test_data_path: artifacts/data_transformation/test.csv
+  model_path: artifacts/model_tranier/model.joblib
+  metric_file_name: artifacts/model_evalution/metrics.json
