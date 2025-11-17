@@ -1,6 +1,6 @@
 from python:3.8-slim-buster
 
-RUN apt updatae -y && apt install awsli -y
+RUN apt update -y && apt install awscli -y
 WORKDIR /app
 
 COPY . /app
