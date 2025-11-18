@@ -30,7 +30,7 @@ conda create -n ML_venv python=3.8 -y
 ```
 
 ```bash
-conda activate mlproj
+conda activate ML_venv
 ```
 
 
@@ -39,9 +39,8 @@ conda activate mlproj
 pip install -r requirements.txt
 ```
 
-
 ```bash
-# Finally run the following command
+
 python app.py
 ```
 
@@ -57,8 +56,7 @@ open up you local host and port
 [Documentation](https://mlflow.org/docs/latest/index.html)
 
 
-##### cmd
-- mlflow ui
+
 
 ### dagshub
 [dagshub](https://dagshub.com/ChaudhariJayant/MLOPS.mlflow)
@@ -72,7 +70,7 @@ with mlflow.start_run():
   mlflow.log_metric('metric name', 1)
 
 Run this to export as env variables:
-
+<!-- 
 ```bash
 
 export MLFLOW_TRACKING_URI=https://dagshub.com/ChaudhariJayant/MLOPS.mlflow
@@ -81,7 +79,7 @@ export MLFLOW_TRACKING_USERNAME=ChaudhariJayant
 
 export MLFLOW_TRACKING_PASSWORD=759117ca6914d4d199daa2dbba749716a41af74d
 
-```
+``` -->
 
 
 
@@ -159,13 +157,5 @@ export MLFLOW_TRACKING_PASSWORD=759117ca6914d4d199daa2dbba749716a41af74d
     ECR_REPOSITORY_NAME = mlops
 
 
-
-
-## About MLflow 
-MLflow
-
- - Its Production Grade
- - Trace all of your expriements
- - Logging & tagging your model
 
 
