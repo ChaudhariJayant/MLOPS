@@ -1513,3 +1513,17 @@ x==========x]
 [2025-11-17 18:02:46,142: INFO: _internal:  * Detected change in 'D:\\Projects\\Machine Learning\\MLOPS\\app.py', reloading]
 [2025-11-17 18:02:46,143: INFO: _internal:  * Detected change in 'D:\\Projects\\Machine Learning\\MLOPS\\app.py', reloading]
 [2025-11-17 18:02:47,433: INFO: _internal:  * Restarting with watchdog (windowsapi)]
+[2025-11-18 00:31:25,829: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.20.26.21:8080]
+[2025-11-18 00:31:25,829: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2025-11-18 00:31:37,120: INFO: _internal: 10.20.26.21 - - [18/Nov/2025 00:31:37] "GET / HTTP/1.1" 200 -]
+[2025-11-18 00:31:37,256: INFO: _internal: 10.20.26.21 - - [18/Nov/2025 00:31:37] "GET /static/css2/style.css HTTP/1.1" 200 -]
+[2025-11-18 00:31:37,263: INFO: _internal: 10.20.26.21 - - [18/Nov/2025 00:31:37] "GET /static/js/scripts.js HTTP/1.1" 200 -]
+[2025-11-18 00:31:37,266: INFO: _internal: 10.20.26.21 - - [18/Nov/2025 00:31:37] "GET /static/css2/nunito-font.css HTTP/1.1" 200 -]
+[2025-11-18 00:31:37,267: INFO: _internal: 10.20.26.21 - - [18/Nov/2025 00:31:37] "GET /static/css/styles.css HTTP/1.1" 200 -]
+[2025-11-18 00:31:37,387: INFO: _internal: 10.20.26.21 - - [18/Nov/2025 00:31:37] "[33mGET /static/assets/img/wine.jpg HTTP/1.1[0m" 404 -]
+[2025-11-18 00:31:37,388: INFO: _internal: 10.20.26.21 - - [18/Nov/2025 00:31:37] "GET /static/assets/img/form-v9.jpg HTTP/1.1" 200 -]
+[2025-11-18 00:31:37,427: INFO: _internal: 10.20.26.21 - - [18/Nov/2025 00:31:37] "[33mGET /static/fonts/Nunito/Nunito-Bold.ttf HTTP/1.1[0m" 404 -]
+[2025-11-18 00:31:37,461: INFO: _internal: 10.20.26.21 - - [18/Nov/2025 00:31:37] "GET /static/assets/favicon.ico HTTP/1.1" 200 -]
